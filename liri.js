@@ -10,10 +10,10 @@ let spotify = new Spotify(keys.spotify);
 //Variables to get user input
 let spotifyID = process.env.SPOTIFY_ID;
 let userCommand = process.argv[2];
-let userSearch = process.argv[3];
+let userSearch = process.argv.slice(3).join(" ");
 
 //Make a log of searches and show error if error occurs
-fs.appendFile("log.txt", `${userCommand},`, function(err) {
+fs.appendFile("log.txt", `${userCommand}: ${userSearch}, `, function(err) {
     if (err) {
         console.log(err);
     };
@@ -47,11 +47,16 @@ function bandsInTownSearch(band) {
     axios.get(queryURL).then(
         function(response) {
             if (response.data[0].venue != undefined){
+                console.log("---------------------------------------------");
+                console.log(" ");
+                console.log(`******* ${band} *******`);
                 console.log(`Name of Venue: ${response.data[0].venue.name}`);
                 console.log(`Venue Location: ${response.data[0].venue.city}`);
 
                 let dateAndTime = moment(response.data[0].datetime);
                 console.log(`Date & Time of Event: ${dateAndTime.format('dddd, MMMM Do YYYY')}`);
+                console.log(" ");
+                console.log("---------------------------------------------");
             }
             else {
                 console.log("Sorry! No results found.")
