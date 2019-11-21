@@ -84,9 +84,7 @@ function spotifyThisSong(song) {
             aceOfBaseError();
         }
         else {
-            let songs = response.tracks.items;
-
-            songs.forEach(info => {
+            let info = response.tracks.items[0];
                 console.log(" ");
                 console.log("---------- SONG INFO ----------");
                 fs.appendFileSync("log.txt", "***** SONG INFO *****\n");
@@ -98,7 +96,6 @@ function spotifyThisSong(song) {
                 fs.appendFileSync("log.txt", `Preview Song: ${info.preview_url}\n`)
                 console.log(`Album: ${info.album.name}\n`);
                 fs.appendFileSync("log.txt", `Album: ${info.album.name}\n\n`);
-            })
         };
     }).catch(function (err) {
         console.log(err);
