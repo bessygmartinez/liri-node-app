@@ -50,8 +50,8 @@ function bandsInTownSearch(band) {
                 console.log(" ");
                 console.log("---------------------------------------------");
                 console.log(" ");
-                console.log(`******* ${band} *******`);
-                fs.appendFileSync("log.txt", `******* ${band} *******\n`)
+                console.log(`******* ${band.toUpperCase()} *******`);
+                fs.appendFileSync("log.txt", `******* ${band.toUpperCase()} *******\n`)
                 console.log(`Name of Venue: ${response.data[0].venue.name}`);
                 fs.appendFileSync("log.txt", `Name of Venue: ${response.data[0].venue.name}\n`);
                 console.log(`Venue Location: ${response.data[0].venue.city}`);
@@ -129,8 +129,8 @@ function movieThis (movie){
     .then(function(response) {
         if (response.data.Title != undefined) {
             console.log(" ");
-            console.log(`******* Title: ${response.data.Title} ******* `);
-            fs.appendFileSync("log.txt", `Title: ${response.data.Title}\n`);
+            console.log(`******* Title: ${response.data.Title.toUpperCase()} ******* `);
+            fs.appendFileSync("log.txt", `Title: ${response.data.Title.toUpperCase()}\n`);
             console.log(`Release Year: ${response.data.Year}`);
             fs.appendFileSync("log.txt", `Release Year: ${response.data.Year}\n`);
             console.log(`IMDB Rating: ${response.data.imdbRating}`);
