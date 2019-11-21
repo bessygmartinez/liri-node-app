@@ -98,9 +98,11 @@ function spotifyThisSong(song) {
                 fs.appendFileSync("log.txt", `Preview Song: ${info.preview_url}\n`)
                 console.log(`Album: ${info.album.name}\n`);
                 fs.appendFileSync("log.txt", `Album: ${info.album.name}\n\n`);
-            });
+            })
         };
-    })
+    }).catch(function (err) {
+        console.log(err);
+    });
 };
 
 function aceOfBaseError() {
@@ -155,9 +157,20 @@ function movieThis (movie){
         console.log("It's on Netflix!");
         console.log("---------------------------------------------\n");
         };
+    }).catch(function (err) {
+        console.log(err);
     });
 };
 
 function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        let dataArr = data.split(",");
+        bandsInTownSearch(JSON.parse(dataArr[1]));
+        spotifyThisSong(dataArr[3]);
+        movieThis(dataArr[5]);
     
-}
+        if (err) {
+            return console.log(err);
+        };
+    });
+};
