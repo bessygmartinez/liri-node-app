@@ -13,7 +13,7 @@ let userCommand = process.argv[2];
 let userSearch = process.argv.slice(3).join(" ");
 
 //Make a log of searches and show error if error occurs
-fs.appendFile("log.txt", `---------------------- ${userCommand}: ${userSearch} ---------------------- \n`, function (err) {
+fs.appendFile("log.txt", `---------------------- ${userCommand.toUpperCase()}: ${userSearch.toUpperCase()} ---------------------- \n`, function (err) {
     if (err) {
         console.log(err);
     };
@@ -47,6 +47,7 @@ function bandsInTownSearch(band) {
     axios.get(queryURL).then(
         function (response) {
             if (response.data[0].venue != undefined) {
+                console.log(" ");
                 console.log("---------------------------------------------");
                 console.log(" ");
                 console.log(`******* ${band} *******`);
@@ -60,10 +61,11 @@ function bandsInTownSearch(band) {
                 console.log(`Date & Time of Event: ${dateAndTime.format('dddd, MMMM Do YYYY')}`);
                 fs.appendFileSync("log.txt", `Date & Time of Event: ${dateAndTime.format('dddd, MMMM Do YYYY')}\n\n`);
                 console.log(" ");
-                console.log("---------------------------------------------");
+                console.log("---------------------------------------------\n");
             }
             else {
-                console.log("Sorry! No results found.")
+                console.log(" ");
+                console.log("Sorry! No results found.\n")
             }
         }
     ).catch(function (err) {
@@ -85,7 +87,8 @@ function spotifyThisSong(song) {
             let songs = response.tracks.items;
 
             songs.forEach(info => {
-                console.log("---- SONG INFO ----");
+                console.log(" ");
+                console.log("---------- SONG INFO ----------");
                 fs.appendFileSync("log.txt", "***** SONG INFO *****\n");
                 console.log(`Song Name: ${info.name}`);
                 fs.appendFileSync("log.txt", `Song Name: ${info.name}\n`);
@@ -109,9 +112,10 @@ function aceOfBaseError() {
         let songs = response.tracks.items;
 
             songs.forEach(info => {
+                console.log(" ");
                 console.log("********** No Results found **********");
                 console.log('Showing result for "The Sign" by Ace of Base:');
-                console.log("---- SONG INFO ----");
+                console.log("---------- SONG INFO ----------");
                 console.log(`Song Name: ${info.name}`);
                 console.log(`Artist(s): ${info.artists[0].name}`);
                 console.log(`Preview Song: ${info.preview_url}`);
@@ -119,3 +123,41 @@ function aceOfBaseError() {
             });
     });
 };
+
+function movieThis (movie){
+    let queryURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    axios.get(queryURL)
+    .then(function(response) {
+        if (response.data.Title != undefined) {
+            console.log(" ");
+            console.log(`******* Title: ${response.data.Title} ******* `);
+            fs.appendFileSync("log.txt", `Title: ${response.data.Title}\n`);
+            console.log(`Release Year: ${response.data.Year}`);
+            fs.appendFileSync("log.txt", `Release Year: ${response.data.Year}\n`);
+            console.log(`IMDB Rating: ${response.data.imdbRating}`);
+            fs.appendFileSync("log.txt", `IMDB Rating: ${response.data.imdbRating}\n`);
+            console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);
+            fs.appendFileSync("log.txt", `Rotten Tomatoes Rating: ${response.data.tomatoRating}\n`);
+            console.log(`Country Produced In: ${response.data.Country}`);
+            fs.appendFileSync("log.txt", `Country Produced In: ${response.data.Country}\n`);
+            console.log(`Language: ${response.data.Language}`);
+            fs.appendFileSync("log.txt", `Language: ${response.data.Language}\n`);
+            console.log(`Plot: ${response.data.Plot}`);
+            fs.appendFileSync("log.txt", `Plot: ${response.data.Plot}\n`);
+            console.log(`Actors: ${response.data.Actors}\n`);
+            fs.appendFileSync("log.txt", `Actors: ${response.data.Actors}\n\n`);
+        }
+        else {
+        console.log(" ");
+        console.log("---------------------------------------------");
+        console.log ("NO RESULTS FOUND.\n");
+        console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947");
+        console.log("It's on Netflix!");
+        console.log("---------------------------------------------\n");
+        };
+    });
+};
+
+function doWhatItSays() {
+    
+}
