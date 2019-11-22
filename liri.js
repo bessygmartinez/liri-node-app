@@ -136,7 +136,7 @@ function movieThis (movie){
             console.log(`IMDB Rating: ${response.data.imdbRating}`);
             fs.appendFileSync("log.txt", `IMDB Rating: ${response.data.imdbRating}\n`);
             console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);
-            fs.appendFileSync("log.txt", `Rotten Tomatoes Rating: ${response.data.tomatoRating}\n`);
+            fs.appendFileSync("log.txt", `Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}\n`);
             console.log(`Country Produced In: ${response.data.Country}`);
             fs.appendFileSync("log.txt", `Country Produced In: ${response.data.Country}\n`);
             console.log(`Language: ${response.data.Language}`);
