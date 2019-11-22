@@ -15,7 +15,7 @@ Album: Enter The Wu-Tang (36 Chambers) [Expanded Edition]
 Title: THE PRINCESS BRIDE
 Release Year: 1987
 IMDB Rating: 8.1
-Rotten Tomatoes Rating: undefined
+Rotten Tomatoes Rating: 97%
 Country Produced In: USA
 Language: English
 Plot: While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.
@@ -25,7 +25,7 @@ Actors: Cary Elwes, Mandy Patinkin, Chris Sarandon, Christopher Guest
 Title: THE LEGO MOVIE
 Release Year: 2014
 IMDB Rating: 7.8
-Rotten Tomatoes Rating: undefined
+Rotten Tomatoes Rating: 96%
 Country Produced In: USA, Denmark, Australia
 Language: English, Turkish
 Plot: An ordinary LEGO construction worker, thought to be the prophesied as "special", is recruited to join a quest to stop an evil tyrant from gluing the LEGO universe into eternal stasis.
@@ -41,3 +41,4 @@ Song Name: I Want It That Way
 Artist(s): Backstreet Boys
 Preview Song: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=66a2b9366e1a4fe0943852167f6e34b9
 Album: The Hits--Chapter One
+
